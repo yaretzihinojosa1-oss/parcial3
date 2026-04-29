@@ -1,0 +1,87 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class Sumanumeros extends JPanel {
+
+
+    private JLabel titulo, label1, label2, label3;
+    private JTextField texto1, texto2, texto3;
+    private JButton boton1, boton2;
+
+
+    public Sumanumeros() {
+        titulo = new JLabel("Programa para sumar 2 numeros:");
+        label1 = new JLabel("Número 1: ");
+        label2 = new JLabel("Número 2: ");
+        label3 = new JLabel("La suma es: ");
+
+
+        texto1 = new JTextField(10);
+        texto2 = new JTextField(10);
+        texto3 = new JTextField(10);
+
+
+        boton1 = new JButton("Sumar");
+        boton2 = new JButton("Limpiar");
+
+
+        add(titulo);
+        add(label1);
+        add(texto1);
+        add(label2);
+        add(texto2);
+        add(label3);
+        add(texto3);
+        add(boton1);
+        add(boton2);
+
+
+        boton1.addActionListener(new TempListener());
+        boton2.addActionListener(new TempListener());
+
+
+        setPreferredSize(new Dimension(300, 400));
+        setBackground(Color.ORANGE);
+    }
+
+
+    private class TempListener implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
+
+
+            if (event.getSource().equals(boton1)) {
+                try {
+                    int a = Integer.parseInt(texto1.getText());
+                    int b = Integer.parseInt(texto2.getText());
+                    int suma = a + b;
+                    texto3.setText(String.valueOf(suma));
+                } catch (NumberFormatException e) {
+                    texto3.setText("Error");
+                }
+            }
+
+
+            if (event.getSource().equals(boton2)) {
+                texto1.setText("");
+                texto2.setText("");
+                texto3.setText("");
+            }
+        }
+    }
+
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Sumador");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        frame.getContentPane().add(new Sumanumeros());
+
+
+        frame.pack();
+        frame.setLocationRelativeTo(null); // centra la ventana
+        frame.setVisible(true);
+    }
+}
