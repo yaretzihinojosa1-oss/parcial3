@@ -1,0 +1,34 @@
+import javax.swing.*;
+import java.awt.*;
+public class MiSwing1
+{
+  public static void main (String args[])
+  {
+	JFrame frame = new JFrame("Mi Frame");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel primary = new JPanel();
+         frame.setBackground(Color.pink);
+        primary.setBackground(Color.cyan);
+        primary.setPreferredSize(new  Dimension(250,275));
+        frame.setPreferredSize (new Dimension(300,300));
+        JLabel label1 = new JLabel ("hola");
+        JLabel label2 =new JLabel ("Probando");
+        JButton boton1 = new JButton("Calcular");
+        boton1.setBackground(Color.BLUE);
+        JTextField texto1= new JTextField(10);
+        ImageIcon icon = new ImageIcon("Em.jpg");
+        JLabel label3 = new JLabel("Image and Text", icon, JLabel.CENTER);
+        label3.setIcon(icon);
+        primary.add(label3);
+        primary.add(boton1);
+         primary.add(label2);
+         primary.add(texto1);
+         primary.add(label1);
+       
+        frame.getContentPane().add(primary);
+         frame.pack();
+         frame.setVisible(true);   
+    }
+}
+
+
